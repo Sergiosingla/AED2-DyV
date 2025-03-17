@@ -126,9 +126,12 @@ Data DyV_algorithm(string A, int i, int n, int m, char C){
 
 int main(){
     const int i = 0;
-    string A = "me gusta el quesoo";
+    const int m = 10;
+    const char C = 'o';
+    string A = "sssssssssssssssssssssssssso";
+    const long n = A.length();
 
-    Data restul = DyV_algorithm(A,i,A.length(),10,'o');
+    Data restul = DyV_algorithm(A,i,n,m,C);
 
     printf("Inicio=%d\nNº apariciones=%d\n",restul.index+1,restul.nOcu);
 
