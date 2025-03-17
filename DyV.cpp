@@ -18,6 +18,8 @@ Data contarCcons(string A,int i, int n, char C){
     int cont=0;
     int index=-1;
 
+    //Esto es un test para los commits
+
     for(int j=i;j<n+i;j++){
         if(A[j]==C){
             if(cont==0){
