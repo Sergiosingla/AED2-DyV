@@ -124,9 +124,6 @@ Data DyV_algorithm(string A, int i, int n, int m, char C){
 
 
 
-
-
-
 int main(){
     const int i = 0;
     string A = "me gusta el quesoo";
