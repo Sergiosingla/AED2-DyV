@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
+#include <random>
 
 using namespace std;
 
@@ -32,7 +35,7 @@ Data contarCcons(string A,int i, int n, char C){
             }
             cont=0;
         }
-        
+
     }
     if (cont>0) {
         res.nOcu=cont;
@@ -44,7 +47,7 @@ Data contarCcons(string A,int i, int n, char C){
 
 
 Data combinar(string A, int n, int m, char C, Data X, int finX, Data Z){
-    
+
     // Seleccion de la mejor solucion de ambas partes
     Data firstAttempt;
     if (X.nOcu > Z.nOcu) {
@@ -52,7 +55,7 @@ Data combinar(string A, int n, int m, char C, Data X, int finX, Data Z){
     } else {
         firstAttempt = Z;
     }
-    
+
 
     // Busqueda de una posible mejor solucion en el centro de ambas partes
 
@@ -61,12 +64,12 @@ Data combinar(string A, int n, int m, char C, Data X, int finX, Data Z){
         return firstAttempt;
     }
     else {          // Si la primera parte termina y la segunda parte empiezan en C se busca una posible solucion
-        
+
         // Avanzamos hacia atras hasta dejar de encontrar C
         int j=finX-1;
 
         // Contador de C consecutivas hacia atras en la primera parte
-        int secondAttemptCont = 0;    
+        int secondAttemptCont = 0;
         while(j>=0&&A[j]==C) {
             secondAttemptCont++;
             j--;
@@ -122,18 +125,85 @@ Data DyV_algorithm(string A, int i, int n, int m, char C){
 
 }
 
+string generarStringAleatorio(int longitud) {
+
+    const string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // se puede lograr lo mismo con char c = (char)random(123); pero asi queda mas claro
+    srand(time(nullptr));
+
+    string resultado;
+    resultado.reserve(longitud);
+
+    for (int i = 0; i < longitud; ++i) {
+        resultado += caracteres[rand() % caracteres.size()];
+    }
+
+    return resultado;
+
+
+    // Este lo dejo por si hay que mirar algo o cambiar algo pero siempre da el mismo resultado (si pones 200 en el tamaño, m = 10 y C = o, da siempre el mismo valor)
+    /*
+    const string caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(0, caracteres.size() - 1);
+
+    string resultado;
+    resultado.reserve(longitud);
+
+    for (int i = 0; i < longitud; ++i) {
+        resultado += caracteres[distrib(gen)];
+    }
+
+    return resultado;
+    */
+
+
+    //Este deberia funcionar y en teoria es mejor pero da un error y no se porque
+    /*
+    //randomize();        // Reinicia el generedor de números aleatorios
+    char cadena[longitud];
+    int last = longitud - 1;
+    cadena[last]=0;
+    for(int i=0; i<last;){
+        char c = (char)random(123); // ASCII 122 = z
+        if(!isalnun (c)) continue;
+        cadena[i] = c;
+        i++;
+    }
+    */
+}
 
 
 int main(){
+    //Indice de inicio de busqueda, se inicializa siempre en 0
     const int i = 0;
-    const int m = 10;
-    const char C = 'o';
-    string A = "sssssssssssssssssssssssssso";
+
+    // Generamos string aleatorio
+    int longitud;
+    cout << "Ingrese la longitud del string aleatorio: ";
+    cin >> longitud;
+    string A = generarStringAleatorio(longitud);
     const long n = A.length();
+    printf("Se ha podido crear satisfactoriamente un String aleatorio de %d caracteres\n", n);
+
+    //Pedimos el tamaño del substring a buscar
+    const int m = 10;
+    /*
+    int m;
+    cout << "Ingrese la longitud del substring a buscar: ";
+    cin >> m;
+    */
+
+    //Pedimos el caracter a buscar
+    const char C = 'o';
+    /*
+    char C;
+    cout << "Ingrese la letra a buscar en el array: ";
+    cin >> C;
+    */
+
 
     Data restul = DyV_algorithm(A,i,n,m,C);
-
-    printf("Inicio=%d\nNÂº apariciones=%d\n",restul.index+1,restul.nOcu);
-
+    printf("Inicio=%d\nApariciones=%d\n",restul.index+1,restul.nOcu);
 }
 
