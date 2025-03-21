@@ -1,15 +1,14 @@
-#include "generadorDeCasos.h"
+//#include "generadorDeCasos.h"
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <random>
 
-generadorDeCasos::generadorDeCasos()
-{
-    //ctor
-}
 
-generadorDeCasos::~generadorDeCasos()
-{
-    //dtor
-}
-
+using namespace std;
+//using namespace generadorDeCasos;
 
 string generarStringAleatorio(int longitud) {
 
@@ -70,7 +69,7 @@ string generarStringAleatorioConRistra(int longitud, char caracter, int posicion
     resultado.reserve(longitud);
 
     for (int i = 0; i < longitud; ++i) {
-        if (i >= posicion && < posicion + numeroDeRepeticiones){
+        if (i >= posicion && i < (posicion + numeroDeRepeticiones)){
             resultado += caracter;
         }
         else {

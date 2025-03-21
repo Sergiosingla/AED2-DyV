@@ -2,15 +2,19 @@
 #define GENERADORDECASOS_H
 
 
+using namespace std;
+
 class generadorDeCasos
 {
     public:
-        generadorDeCasos();
-        virtual ~generadorDeCasos();
+        string generarStringAleatorio(int longitud);
 
-    protected:
+        string generarStringAleatorioConRistra(int longitud, char caracter, int posicion, int numeroDeRepeticiones) ;
 
-    private:
+        string generarStringAleatorioConCaracteresLimitados(int longitud, string caracteres);
+
 };
+
+
 
 #endif // GENERADORDECASOS_H

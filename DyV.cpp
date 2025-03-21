@@ -4,9 +4,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
-#include <generadorDeCasos.cpp>
+#include "generadorDeCasos.cpp"
+//#include "generadorDeCasos.h"
 
-using namespace std;
+
+
 
 typedef struct dataStruct
 {
@@ -135,8 +137,7 @@ int main(){
     int longitud;
     cout << "Ingrese la longitud del string aleatorio: ";
     cin >> longitud;
-    generadorDeCasos j;
-    string A = j.generarStringAleatorio(longitud);
+    string A = generadorDeCasos.generarStringAleatorio(longitud);
     const long n = A.length();
     printf("Se ha podido crear satisfactoriamente un String aleatorio de %d caracteres\n", n);
 
