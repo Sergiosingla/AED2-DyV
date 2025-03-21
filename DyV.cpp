@@ -129,6 +129,37 @@ Data DyV_algorithm(string A, int i, int n, int m, char C){
 }
 
 
+Data solucionDirecta(string A, char C){
+    Data res = {-1,0};
+
+    int cont = 0;
+    int index = -1;
+
+    for(int j=0;j<A.length();j++){
+        if(A[j]==C){
+            if(cont==0){
+                index=j;
+            }
+            cont++;
+        }
+        else{
+            if(cont>res.nOcu){
+                res.nOcu=cont;
+                res.index=index;
+            }
+            cont=0;
+        }
+
+    }
+    if (cont>0) {
+        res.nOcu=cont;
+        res.index=index;
+    }
+    return res;
+}
+
+
+
 int main(){
     //Indice de inicio de busqueda, se inicializa siempre en 0
     const int i = 0;
