@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include "generardorString.cpp"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ typedef struct dataStruct
     int index;
     int nOcu;
 }Data;
+
 
 
 // Funcion que resuelve el problema de manera directa
@@ -107,7 +109,7 @@ Data combinar(string A, int n, int m, char C, Data X, int finX, Data Z){
         } else {    // En este punto puede haber una mejor solucion en la combinacion de las dos subpartes
             // K como iterador para contar las C consecutivas desde la division de las dos subpartes hacia delante
             int k = finX;
-            while (k < m && A[k] == C) {
+            while (k < A.length() && A[k] == C) {
                 secondAttemptCont++;
                 k++;
             }
@@ -148,16 +150,22 @@ Data DyV_algorithm(string A, int i, int n, int m, char C){
 
 
 // Este programa busca en la cadena A una subcadena de tamaño m donde aparzezcan en mayor numero de caracteres C consecutivos
-int main(){
+int main(int argc, char* argv[]){
     const int i = 0;                            // Indice que marca el inicio del String A
-    const int m = 10;                           // Tamaño de las subcadenas solucion
-    const char C = 'o';                         // Caracter que deber aparecer consecutivo
-    string A = "sssssssssssssssssssssssssso";   // String de entrada para analizar
-    const long n = A.length();                  // Longuitud de la cadena A
+    const int m = 100;                           // Tamaño de las subcadenas solucion
+    const char C = 'a';                         // Caracter que deber aparecer consecutivo
+    
+    long n = strtol(argv[1], nullptr, 10);
+    
+    string A = generarStringAleatorioConCaracteresLimitados(n,"abcdefghijklmnñopqrstuvwxyz");
 
-    Data restul = DyV_algorithm(A,i,n,m,C);
+    string B = "hooola";
+    
+                      // Longuitud de la cadena A
 
-    printf("Inicio=%d\nNº apariciones=%d\n",restul.index+1,restul.nOcu);
+    Data result = DyV_algorithm(A,i,n,m,C);
+
+    //printf("Inicio=%d\nNº apariciones=%d\n",result.index+1,result.nOcu);
 
 }
 

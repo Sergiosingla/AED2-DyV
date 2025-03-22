@@ -1,0 +1,80 @@
+contarCcons(string A, char C) {
+
+    resultado
+
+    cont = 0
+    index = -1
+
+    for(char x : A) {
+        if(x = C) {
+            if(cont==0) {
+                index = posicion_actual
+            }
+            cont++
+        }
+        else {
+            if(cont > resultado) {
+                actualizar resultado
+            }
+            cont = 0
+        }
+    }
+
+    return resultado
+}
+
+                    O(n)
+combinar (string A, int div resultado_Izq, resultado_Der) {
+    
+    if (resultado_Izq mejor que resultado_Der) {
+        firstAttempt = resultado_Izq
+    }
+    else {
+        firstAttempt = resultado_Der
+    }
+
+    if(A[div-1]!=C || A[div]!=C) {
+        return firstAttempt
+    }
+    else {
+        iterador = div-1
+
+        contadorSecondAttempt = 0
+        while(iterador>=0 && A[iterador]==C) {
+            contadorSecondAttempt++
+            iterador--
+        }
+
+        indexIniSecondAttempt=iterador+1
+
+        if (necesaryC > resultado_Der) {
+            return firstAttempt
+        }
+        else {
+            for(int i =div;i<A.length;i++) {
+                secondAttemptCont++
+            }
+
+            if(secondAttemptCont mejor que firstAttempt ){
+                return secondAttempt
+            }
+            return firstAttempt
+        }
+    }
+}
+
+
+
+DyV_algorithm (string A, int i, int n, int m, char C) {
+    
+    if(m<1) {
+        salir
+    }
+    if(n<=m) {
+        contarCcons(A,C) --> O(n) 
+    }
+    else {
+        combinar(A,n,m,C,DyV_algorithm(A/2,i,m,C),DyV_algorithm(A/2,C)) --> 2n*log(n)
+    }
+}
+    
