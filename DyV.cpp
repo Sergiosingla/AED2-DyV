@@ -157,7 +157,7 @@ int main(int argc, char* argv[]){
     
     long n = strtol(argv[1], nullptr, 10);
     
-    string A = generarStringAleatorioConCaracteresLimitados(n,"abcdefghijklmnñopqrstuvwxyz");
+    string A = generarStringAleatorioConCaracteresLimitados(n,"abcdef");
 
     string B = "hooola";
     

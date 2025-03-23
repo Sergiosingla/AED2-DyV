@@ -23,7 +23,7 @@ contarCcons(string A, char C) {
     return resultado
 }
 
-                    O(n)
+
 combinar (string A, int div resultado_Izq, resultado_Der) {
     
     if (resultado_Izq mejor que resultado_Der) {
@@ -71,10 +71,10 @@ DyV_algorithm (string A, int i, int n, int m, char C) {
         salir
     }
     if(n<=m) {
-        contarCcons(A,C) --> O(n) 
+        contarCcons(A,C)
     }
     else {
-        combinar(A,n,m,C,DyV_algorithm(A/2,i,m,C),DyV_algorithm(A/2,C)) --> 2n*log(n)
+        combinar(A,n,m,C,DyV_algorithm(A/2,i,m,C),DyV_algorithm(A/2,C))
     }
 }
     
