@@ -1,2 +1,4 @@
 /.vscode
-/.time.txt
+/time.txt
+/.venv
+/output
