@@ -1,4 +1,5 @@
 /.vscode
-/time.txt
 /.venv
 /output
+/time1M
+/minimosCuadrados.py
