@@ -34,7 +34,7 @@ Para ello, hemos creado un programa capaz de resolver dicho problema aplicando e
 ├── README.md             # Este archivo
 ├── pseudo.txt            # Pseudocódigo del algoritmo
 ├── .gitignore            # Archivos y carpetas a excluir de Git
-├── tiempo/               # Gráficas del tiempo de ejecución del algoritmo
+├── graficas/             # Gráficas del tiempo de ejecución del algoritmo
 └── time/                 # Archivos .txt que almacenan los tiempos en función de n
 ```
 
